@@ -1,0 +1,312 @@
+<div class="page-content">
+    <div class="page-breadcrumb d-none d-md-flex align-items-center mb-3">
+        <div class="breadcrumb-title pr-3">Admin</div>
+        <div class="pl-3">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-0 p-0">
+                    <li class="breadcrumb-item"><a href="javascript:;"><i class='bx bx-home-alt'></i></a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">Account Manager</li>
+
+
+                    <li class="breadcrumb-item active" aria-current="page">All Account</li>
+                </ol>
+            </nav>
+        </div>
+
+
+    </div>
+    <div class="col-md-12  card radius-15 align-content-center ">
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table mb-0">
+
+                    <thead>
+                        <tr>
+                            <th class="align-middle text-center">No.</th>
+                            <th class="align-middle text-center">Image</th>
+                            <th class="align-middle text-center">Name</th>
+                            <th class="align-middle text-center">Email</th>
+                            <th class="align-middle text-center">Role</th>
+                            <th class="align-middle text-center">Department</th>
+                            <th class="align-middle text-center">Action</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let account of accounts">
+                            <td class="align-middle text-center">{{account.userId}}</td>
+                            <td class="align-middle text-center">
+
+                                <img class="bg-transparent border"
+                                    src="https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png"
+                                    width="35" alt="">
+
+                            </td>
+                            <td class="align-middle text-center">{{account.username}}</td>
+                            <td class="align-middle text-center">{{account.email}}</td>
+                            <td class="align-middle text-center">{{account.role}}</td>
+                            <td class="align-middle text-center">{{account.department}}</td>
+                            <td class="align-middle text-center">
+                                <button type="button" class="btn btn-info radius-15 me-3" data-toggle="modal"
+                                    data-target="#exampleModalCenter">Edit</button>
+
+                                <button type="button" (click)="delete(account.userId)"
+                                    class="btn btn-danger radius-15">Delete</button>
+                            </td>
+
+                        </tr>
+
+
+                    </tbody>
+                </table>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Edit Account</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+
+
+                            <div class="card-body">
+
+                                <div class="tab-content mt-3">
+
+                                    <div class="card shadow-none border mb-0 radius-15">
+                                        <div class="card-body">
+
+                                            <div class="row">
+                                                <div class="col-12 ">
+
+                                                    <form class="form-horizontal" [formGroup]="editAccountForm"
+                                                        (ngSubmit)="EditAccountForm(editAccountForm.value)" novalidate>
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-6">
+                                                                <label>First Name</label>
+                                                                <input type="text" formControlName="firstName"
+                                                                    placeholder="Nguyen Van" class="form-control"
+                                                                    required>
+                                                                <div class="text-danger text-center invalid-feedback d-block"
+                                                                    *ngIf="editAccountForm.controls.firstName?.valid && (editAccountForm!.controls.firstName?.dirty || editAccountForm.controls.firstName?.touched)">
+
+                                                                    <span
+                                                                        [hidden]="!editAccountForm.controls.firstName.errors?.['required']">
+                                                                        FirstName is required!
+                                                                    </span>
+                                                                    <span
+                                                                        [hidden]="!editAccountForm.controls.firstName.errors?.['minlength']">
+                                                                        FirstName must be at least 3 characters long!
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group col-md-6">
+                                                                <label>Last Name</label>
+                                                                <input type="text" formControlName="lastName"
+                                                                    placeholder="A" class="form-control" required>
+                                                                <div class="text-danger text-center invalid-feedback d-block"
+                                                                    *ngIf="!editAccountForm.controls.lastName?.valid && (editAccountForm.controls.lastName?.dirty || editAccountForm.controls.lastName?.touched)">
+
+                                                                    <span
+                                                                        [hidden]="!editAccountForm.controls.lastName.errors?.['required']">
+                                                                        LastName is required!
+                                                                    </span>
+                                                                    <span
+                                                                        [hidden]="!editAccountForm.controls.lastName.errors?.['minlength']">
+                                                                        LastName must be at least 2 characters long!
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Username</label>
+                                                            <input type="email" placeholder="anne"
+                                                                formControlName="username" class="form-control"
+                                                                required>
+                                                            <div class="text-danger text-center invalid-feedback d-block"
+                                                                *ngIf="!editAccountForm.controls.username?.valid && (editAccountForm.controls.username?.dirty || editAccountForm.controls.username?.touched)">
+
+                                                                <span
+                                                                    [hidden]="!editAccountForm.controls.username.errors?.['required']">
+                                                                    Username is required!
+                                                                </span>
+                                                                <span
+                                                                    [hidden]="!editAccountForm.controls.username.errors?.['minlength']">
+                                                                    Username must be at least 5 characters long!
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Email</label>
+                                                            <input type="email" placeholder="svetlana1997@example.com"
+                                                                formControlName="email" class="form-control" required>
+                                                            <div class="text-danger text-center invalid-feedback d-block"
+                                                                *ngIf="!editAccountForm.controls.email?.valid && (editAccountForm.controls.email?.dirty || editAccountForm.controls.email?.touched)">
+
+                                                                <span
+                                                                    [hidden]="!editAccountForm.controls.email.errors?.['required']">
+                                                                    Email is required!
+                                                                </span>
+                                                                <span
+                                                                    [hidden]="!editAccountForm.controls.email.errors?.['email']">
+                                                                    Email is invalid!
+                                                                </span>
+                                                                <span
+                                                                    [hidden]="!editAccountForm.controls.email.errors?.['minlength']">
+                                                                    Email must be at least 3 characters long!
+                                                                </span>
+
+                                                            </div>
+
+
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label>Password</label>
+                                                            <input type="password" class="form-control"
+                                                                placeholder="*******" formControlName="password"
+                                                                required>
+                                                            <div class="text-danger text-center invalid-feedback d-block"
+                                                                *ngIf="!editAccountForm.controls.password?.valid && (editAccountForm.controls.password?.dirty || editAccountForm.controls.password?.touched)">
+
+                                                                <span
+                                                                    [hidden]="!editAccountForm.controls.password.errors?.['required']">
+                                                                    Password is required!
+                                                                </span>
+                                                                <span
+                                                                    [hidden]="!editAccountForm.controls.password.errors?.['minlength']">
+                                                                    Password must be at least 6 characters long!
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-6">
+                                                                <label>Role</label>
+
+
+                                                                <select class="form-select text-center"
+                                                                    formControlName="role" required>
+
+                                                                    <option
+                                                                        *ngFor="let opt of ngOptionrole, let i = index "
+                                                                        [value]="i+ 1">
+                                                                        {{opt}}
+                                                                    </option>
+                                                                    <div class="text-danger text-center invalid-feedback d-block"
+                                                                        *ngIf="!editAccountForm.controls.role?.valid && (editAccountForm.controls.role?.dirty || editAccountForm.controls.role?.touched)">
+
+                                                                        <span
+                                                                            [hidden]="!editAccountForm.controls.role.errors?.['required']">
+                                                                            Role is required!
+                                                                        </span>
+                                                                        <span
+                                                                            [hidden]="!editAccountForm.controls.role.errors?.['minlength']">
+                                                                            Role must be at least 6 characters long!
+                                                                        </span>
+                                                                    </div>
+
+                                                                </select>
+
+
+
+                                                            </div>
+
+                                                            <div class="form-group col-md-6">
+                                                                <label>Department</label>
+                                                                <select class="form-select text-center"
+                                                                    formControlName="department" required>
+
+                                                                    <option *ngFor="let opt of ngDepartment"
+                                                                        [value]="opt">
+                                                                        {{opt}}
+                                                                    </option>
+                                                                    <div class="text-danger text-center invalid-feedback d-block"
+                                                                        *ngIf="!editAccountForm.controls.department?.valid && (editAccountForm.controls.department?.dirty || editAccountForm.controls.department?.touched)">
+
+                                                                        <span
+                                                                            [hidden]="!editAccountForm.controls.department.errors?.['required']">
+                                                                            Department is required!
+                                                                        </span>
+                                                                    </div>
+
+                                                                </select>
+                                                            </div>
+                                                        </div>
+
+
+
+
+                                                        <div
+                                                            class=" col-sm-12 form-group text-center align-content-center">
+                                                            <label>Image</label>
+                                                            <input type="file" class="form-control"
+                                                                formControlName="image">
+                                                            <div class="text-danger text-center invalid-feedback d-block"
+                                                                *ngIf="!editAccountForm.controls.image?.valid && (editAccountForm.controls.image?.dirty || editAccountForm.controls.image?.touched)">
+
+                                                                <span
+                                                                    [hidden]="!editAccountForm.controls.image.errors?.['required']">
+                                                                    Image is required!
+                                                                </span>
+                                                                <span
+                                                                    [hidden]="!editAccountForm.controls.image.errors?.['minlength']">
+                                                                    Image must be at least 6 characters long!
+                                                                </span>
+                                                            </div>
+
+                                                        </div>
+
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox" required> Agree the terms and
+                                                                policy
+                                                            </label>
+                                                        </div>
+
+
+                                                    </form>
+
+
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <div class="modal-footer ">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <nav class="float-end mt-4" aria-label="Page navigation">
+                    <ul class="pagination">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#">Previous</a>
+                        </li>
+                        <li class="page-item active">
+                            <a class="page-link" href="#">1</a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                    </ul>
+                </nav>
+
+            </div>
+        </div>
+    </div>
+
+</div>

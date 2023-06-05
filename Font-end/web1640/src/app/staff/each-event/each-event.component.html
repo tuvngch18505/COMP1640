@@ -1,0 +1,95 @@
+<div class="page-content">
+
+    <!--breadcrumb-->
+    <div class="page-breadcrumb d-none d-md-flex align-items-center mb-3">
+        <div class="breadcrumb-title pr-3">Staff</div>
+        <div class="pl-3">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-0 p-0">
+                    <li class="breadcrumb-item"><a href="javascript:;"><i class='bx
+                bx-home-alt'></i></a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">Event Name</li>
+                </ol>
+            </nav>
+        </div>
+
+    </div>
+    <!--end breadcrumb-->
+
+    <div class="row ">
+
+        <div class="col-md-12 card radius-15 align-content-center border mb-0 mt-2">
+            <div class="row">
+                <div class="col-7">
+                    <h4 class="text-right">Name Event </h4>
+
+                </div>
+                <div class="col-5">
+                    <h6 class="text-center align-content-center">12/03/2023 - 12/04/2023</h6>
+                </div>
+            </div>
+            <div class="row card-body Regular shadow col-11 m-auto align-content-center  radius-15">
+                <div>
+                    <p class="text-center">Content Event</p>
+                </div>
+
+            </div>
+            <br>
+        </div>
+        <div class="col-md-12 radius-15 align-content-center text-center m-auto pt-4">
+            <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2">Create New Idea</button>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header ">
+                        <h5 class="modal-title ">Create Idea</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span
+                                aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <h5 class="text-center">Title</h5>
+                            <input type="text" class="form-control" placeholder="Title..." formControlName="">
+                        </div>
+                        <div class="form-group">
+                            <h5 class="text-center">Content</h5>
+                            <select class=" form-select" aria-label="Button group with nested dropdown">
+                                <option *ngFor="let opt of ngListCategory" class="text-center">{{opt}}</option>
+
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <h5 class="text-center">Content</h5>
+                            <textarea class="form-control" placeholder="Content..." rows="3" cols="3"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <h5 class="text-center">Document</h5>
+                            <div class="card radius-15">
+                                <div class="card-body">
+                                    <form>
+                                        <input id="image-uploadify" type="file" accept=".xlsx,.xls,image/*,.doc,audio/*,.docx,video/*,.ppt,.pptx,.txt,.pdf" multiple>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <idea-of-event></idea-of-event>
+    </div>
+
+</div>

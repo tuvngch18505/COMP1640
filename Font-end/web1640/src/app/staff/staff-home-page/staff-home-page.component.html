@@ -1,0 +1,128 @@
+<div class="page-content">
+
+    <!--breadcrumb-->
+    <div class="page-breadcrumb d-none d-md-flex align-items-center mb-3">
+        <div class="breadcrumb-title pr-3">Staff</div>
+        <div class="pl-3">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-0 p-0">
+                    <li class="breadcrumb-item"><a href="javascript:;"><i class='bx
+                bx-home-alt'></i></a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">HomePage</li>
+                </ol>
+            </nav>
+        </div>
+
+    </div>
+    <!--end breadcrumb-->
+
+    <div class="row ">
+        <div class="card radius-15">
+            <div class="card-body radius-15">
+                <div class="row">
+                    <div class="col-4">
+
+                        <div *ngFor="let opt of ngListEvent" class="chip">{{opt}} <span class="closebtn"
+                                onclick="this.parentElement.style.display='none'">&times;</span>
+                        </div>
+                    </div>
+
+
+
+                    <!-- button filter model -->
+                    <!-- <div class="col-4"> -->
+                    <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <i class="bx bx-filter-alt"></i>
+                        Filter</button> -->
+                    <div class="accordion accordion-flush col-5 " id="accordionExample">
+                        <div class="accordion-item text-center align-content-center m-auto">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button
+                                    class="accordion-button col-3 btn bg-info text-white text-center align-content-center m-auto "
+                                    type="button" data-bs-toggle="collapse" data-bs-target="#Filter"
+                                    aria-expanded="true" aria-controls="Filter">
+                                    Filter
+                                </button>
+                            </h2>
+                            <div id="Filter" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body card-body ">
+                                    <div class="row ">
+                                        <div class="col-sm-4">
+
+                                            <h6>Event</h6>
+
+                                            <div class="form-check" *ngFor="let opt of ngListEvent">
+                                                <input class="form-check-input" type="checkbox" value=""
+                                                    id="flexCheckDefault">
+                                                <label class="form-check-label  font-14" for="flexCheckDefault">
+                                                    {{opt}}
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+
+                                            <h6>Category</h6>
+
+
+                                            <div class="form-check" *ngFor="let opt of ngListCategory">
+                                                <input class="form-check-input" type="checkbox" value=""
+                                                    id="flexCheckDefault">
+                                                <label class="form-check-label font-14" for="flexCheckDefault">
+                                                    {{opt}}
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+
+                                            <h6>Department</h6>
+
+
+                                            <div class="form-check" *ngFor="let opt of ngListDepartment">
+                                                <input class="form-check-input" type="checkbox" value=""
+                                                    id="flexCheckDefault">
+                                                <label class="form-check-label  font-14" for="flexCheckDefault">
+                                                    {{opt}}
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- </div> -->
+
+                    <div class="btn-sm-group col-3" role="group" aria-label="Button group with nested dropdown">
+
+                        <!-- <div class="btn-group" role="group"> -->
+                        <!-- <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">Sorted By</button>
+                        <div class="dropdown-menu"> <a class="dropdown-item" href="#">Most Popular Idea</a>
+                            <a class="dropdown-item" href="#">Most Viewed Idea</a>
+                            <a class="dropdown-item" href="#">Least Idea</a>
+                        </div> -->
+
+                        <select class="btn btn-info radius-30 m-auto col-9 hovering-zoom" type="button">
+                            <option class="bg-light-info text-dark">Sorted By</option>
+                            <option class="bg-light-info text-dark">Most Popular Idea</option>
+                            <option class="bg-light-info text-dark">Most Viewed Idea</option>
+                            <option class="bg-light-info text-dark">Least Idea</option>
+                        </select>
+                        <!-- </div> -->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <idea-of-event></idea-of-event>
+
+        
+
+
+    </div>
+</div>
